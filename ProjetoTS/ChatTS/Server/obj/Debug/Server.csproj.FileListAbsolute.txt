@@ -10,3 +10,15 @@ C:\Users\Igor\Desktop\ProjetoTS\ChatTS\Server\obj\Debug\Server.csproj.CoreCompil
 C:\Users\Igor\Desktop\ProjetoTS\ChatTS\Server\obj\Debug\Server.csproj.Up2Date
 C:\Users\Igor\Desktop\ProjetoTS\ChatTS\Server\obj\Debug\Server.exe
 C:\Users\Igor\Desktop\ProjetoTS\ChatTS\Server\obj\Debug\Server.pdb
+C:\Users\Igor\Desktop\ProjetoTS_GIT\projetoTS\ProjetoTS\ChatTS\Server\obj\Debug\Server.csproj.AssemblyReference.cache
+C:\Users\Igor\Desktop\ProjetoTS_GIT\projetoTS\ProjetoTS\ChatTS\Server\obj\Debug\Server.csproj.CoreCompileInputs.cache
+C:\Users\Igor\Desktop\ProjetoTS_GIT\projetoTS\ProjetoTS\ChatTS\Server\obj\Debug\Server.exe
+C:\Users\Igor\Desktop\ProjetoTS_GIT\projetoTS\ProjetoTS\ChatTS\Server\obj\Debug\Server.pdb
+C:\Users\Igor\Desktop\ProjetoTS_GIT\projetoTS\ProjetoTS\ChatTS\Server\bin\Debug\Server.exe.config
+C:\Users\Igor\Desktop\ProjetoTS_GIT\projetoTS\ProjetoTS\ChatTS\Server\bin\Debug\Server.exe
+C:\Users\Igor\Desktop\ProjetoTS_GIT\projetoTS\ProjetoTS\ChatTS\Server\bin\Debug\Server.pdb
+C:\Users\Igor\Desktop\ProjetoTS_GIT\projetoTS\ProjetoTS\ChatTS\Server\bin\Debug\EntityFramework.dll
+C:\Users\Igor\Desktop\ProjetoTS_GIT\projetoTS\ProjetoTS\ChatTS\Server\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Igor\Desktop\ProjetoTS_GIT\projetoTS\ProjetoTS\ChatTS\Server\bin\Debug\EntityFramework.xml
+C:\Users\Igor\Desktop\ProjetoTS_GIT\projetoTS\ProjetoTS\ChatTS\Server\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Igor\Desktop\ProjetoTS_GIT\projetoTS\ProjetoTS\ChatTS\Server\obj\Debug\Server.csproj.Up2Date

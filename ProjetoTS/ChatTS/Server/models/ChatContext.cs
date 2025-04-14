@@ -19,8 +19,10 @@ namespace Server.Models
         public DbSet<Message> Messages { get; set; }
         public DbSet<UserRoom> UserRooms { get; set; }
 
-
-
-
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<UserRoom>()
+        .HasKey(ur => new { ur.IdUser, ur.IdRoom });
+        }
     }
 }
