@@ -22,3 +22,4 @@ C:\Users\Igor\Desktop\ProjetoTS_GIT\projetoTS\ProjetoTS\ChatTS\Server\bin\Debug\
 C:\Users\Igor\Desktop\ProjetoTS_GIT\projetoTS\ProjetoTS\ChatTS\Server\bin\Debug\EntityFramework.xml
 C:\Users\Igor\Desktop\ProjetoTS_GIT\projetoTS\ProjetoTS\ChatTS\Server\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Igor\Desktop\ProjetoTS_GIT\projetoTS\ProjetoTS\ChatTS\Server\obj\Debug\Server.csproj.Up2Date
+C:\Users\Igor\Desktop\ProjetoTS_GIT\projetoTS\ProjetoTS\ChatTS\Server\bin\Debug\ProtocolSI.dll
