@@ -3,14 +3,14 @@
   "WorkspaceRootPath": "C:\\Users\\Igor\\Desktop\\ProjetoTS_GIT\\projetoTS\\ProjetoTS\\ChatTS\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CF7BCF94-8A16-4DE7-9A35-39C9727BC591}|Server\\Server.csproj|C:\\Users\\Igor\\Desktop\\ProjetoTS_GIT\\projetoTS\\ProjetoTS\\ChatTS\\server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{CF7BCF94-8A16-4DE7-9A35-39C9727BC591}|Server\\Server.csproj|c:\\users\\igor\\desktop\\projetots_git\\projetots\\projetots\\chatts\\server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CF7BCF94-8A16-4DE7-9A35-39C9727BC591}|Server\\Server.csproj|solutionrelative:server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Igor\\Desktop\\ProjetoTS\\ChatTS\\Server\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D2A6FC05-2E85-4BAA-9D70-A42FAE9279F3}|Client\\Client.csproj|c:\\users\\igor\\desktop\\projetots_git\\projetots\\projetots\\chatts\\client\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{D2A6FC05-2E85-4BAA-9D70-A42FAE9279F3}|Client\\Client.csproj|C:\\Users\\Igor\\Desktop\\ProjetoTS_GIT\\projetoTS\\ProjetoTS\\ChatTS\\client\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D2A6FC05-2E85-4BAA-9D70-A42FAE9279F3}|Client\\Client.csproj|solutionrelative:client\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -61,8 +61,7 @@
               "RelativeToolTip": "Client\\Form1.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAHUAAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-14T22:49:05.412Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-14T22:49:05.412Z"
             },
             {
               "$type": "Document",
@@ -74,8 +73,7 @@
               "RelativeToolTip": "..\\..\\..\\..\\ProjetoTS\\ChatTS\\Server\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAA/AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-14T21:03:17.665Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-14T21:03:17.665Z"
             },
             {
               "$type": "Document",
@@ -85,7 +83,7 @@
               "RelativeDocumentMoniker": "Server\\Program.cs",
               "ToolTip": "C:\\Users\\Igor\\Desktop\\ProjetoTS_GIT\\projetoTS\\ProjetoTS\\ChatTS\\Server\\Program.cs",
               "RelativeToolTip": "Server\\Program.cs",
-              "ViewState": "AgIAAJwAAAAAAAAAAAAmwJ0AAAApAAAAAAAAAA==",
+              "ViewState": "AgIAAHkAAAAAAAAAAAAcwJ0AAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-14T18:20:20.552Z",
               "EditorCaption": ""
@@ -99,8 +97,7 @@
               "ToolTip": "C:\\Users\\Igor\\Desktop\\ProjetoTS_GIT\\projetoTS\\ProjetoTS\\ChatTS\\Client\\Form1.cs [Design]",
               "RelativeToolTip": "Client\\Form1.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-14T18:19:00.23Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-04-14T18:19:00.23Z"
             }
           ]
         }
