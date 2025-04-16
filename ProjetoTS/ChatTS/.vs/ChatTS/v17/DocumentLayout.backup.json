@@ -1,22 +1,30 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\IPL\\Desktop\\IPL\\TS\\Projeto\\projetoTS\\ProjetoTS\\ChatTS\\",
+  "WorkspaceRootPath": "C:\\Users\\Igor\\Desktop\\ProjetoTS_GIT\\projetoTS\\ProjetoTS\\ChatTS\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D2A6FC05-2E85-4BAA-9D70-A42FAE9279F3}|Client\\Client.csproj|C:\\Users\\IPL\\Desktop\\IPL\\TS\\Projeto\\projetoTS\\ProjetoTS\\ChatTS\\client\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D2A6FC05-2E85-4BAA-9D70-A42FAE9279F3}|Client\\Client.csproj|solutionrelative:client\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CF7BCF94-8A16-4DE7-9A35-39C9727BC591}|Server\\Server.csproj|c:\\users\\igor\\desktop\\projetots_git\\projetots\\projetots\\chatts\\server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CF7BCF94-8A16-4DE7-9A35-39C9727BC591}|Server\\Server.csproj|solutionrelative:server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D2A6FC05-2E85-4BAA-9D70-A42FAE9279F3}|Client\\Client.csproj|C:\\Users\\IPL\\Desktop\\IPL\\TS\\Projeto\\projetoTS\\ProjetoTS\\ChatTS\\client\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{D2A6FC05-2E85-4BAA-9D70-A42FAE9279F3}|Client\\Client.csproj|c:\\users\\igor\\desktop\\projetots_git\\projetots\\projetots\\chatts\\client\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{D2A6FC05-2E85-4BAA-9D70-A42FAE9279F3}|Client\\Client.csproj|solutionrelative:client\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D2A6FC05-2E85-4BAA-9D70-A42FAE9279F3}|Client\\Client.csproj|C:\\Users\\IPL\\Desktop\\IPL\\TS\\Projeto\\projetoTS\\ProjetoTS\\ChatTS\\client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{CF7BCF94-8A16-4DE7-9A35-39C9727BC591}|Server\\Server.csproj|C:\\Users\\Igor\\Desktop\\ProjetoTS_GIT\\projetoTS\\ProjetoTS\\ChatTS\\server\\models\\chatcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CF7BCF94-8A16-4DE7-9A35-39C9727BC591}|Server\\Server.csproj|solutionrelative:server\\models\\chatcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CF7BCF94-8A16-4DE7-9A35-39C9727BC591}|Server\\Server.csproj|C:\\Users\\Igor\\Desktop\\ProjetoTS_GIT\\projetoTS\\ProjetoTS\\ChatTS\\server\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CF7BCF94-8A16-4DE7-9A35-39C9727BC591}|Server\\Server.csproj|solutionrelative:server\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D2A6FC05-2E85-4BAA-9D70-A42FAE9279F3}|Client\\Client.csproj|C:\\Users\\Igor\\Desktop\\ProjetoTS_GIT\\projetoTS\\ProjetoTS\\ChatTS\\client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D2A6FC05-2E85-4BAA-9D70-A42FAE9279F3}|Client\\Client.csproj|solutionrelative:client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CF7BCF94-8A16-4DE7-9A35-39C9727BC591}|Server\\Server.csproj|c:\\users\\ipl\\desktop\\ipl\\ts\\projeto\\projetots\\projetots\\chatts\\server\\models\\chatcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CF7BCF94-8A16-4DE7-9A35-39C9727BC591}|Server\\Server.csproj|solutionrelative:server\\models\\chatcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D2A6FC05-2E85-4BAA-9D70-A42FAE9279F3}|Client\\Client.csproj|C:\\Users\\Igor\\Desktop\\ProjetoTS_GIT\\projetoTS\\ProjetoTS\\ChatTS\\client\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D2A6FC05-2E85-4BAA-9D70-A42FAE9279F3}|Client\\Client.csproj|solutionrelative:client\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,17 +34,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 5,
               "Title": "frmLogin.cs",
-              "DocumentMoniker": "C:\\Users\\IPL\\Desktop\\IPL\\TS\\Projeto\\projetoTS\\ProjetoTS\\ChatTS\\Client\\frmLogin.cs",
+              "DocumentMoniker": "C:\\Users\\Igor\\Desktop\\ProjetoTS_GIT\\projetoTS\\ProjetoTS\\ChatTS\\Client\\frmLogin.cs",
               "RelativeDocumentMoniker": "Client\\frmLogin.cs",
-              "ToolTip": "C:\\Users\\IPL\\Desktop\\IPL\\TS\\Projeto\\projetoTS\\ProjetoTS\\ChatTS\\Client\\frmLogin.cs",
+              "ToolTip": "C:\\Users\\Igor\\Desktop\\ProjetoTS_GIT\\projetoTS\\ProjetoTS\\ChatTS\\Client\\frmLogin.cs",
               "RelativeToolTip": "Client\\frmLogin.cs",
-              "ViewState": "AgIAADkAAAAAAAAAAIAwwCoAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABsAAAAAAAAAAAAYwCoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-15T17:28:51.031Z",
               "IsPinned": true,
@@ -44,42 +52,61 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\IPL\\Desktop\\IPL\\TS\\Projeto\\projetoTS\\ProjetoTS\\ChatTS\\Client\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\Igor\\Desktop\\ProjetoTS_GIT\\projetoTS\\ProjetoTS\\ChatTS\\Client\\Program.cs",
               "RelativeDocumentMoniker": "Client\\Program.cs",
-              "ToolTip": "C:\\Users\\IPL\\Desktop\\IPL\\TS\\Projeto\\projetoTS\\ProjetoTS\\ChatTS\\Client\\Program.cs",
+              "ToolTip": "C:\\Users\\Igor\\Desktop\\ProjetoTS_GIT\\projetoTS\\ProjetoTS\\ChatTS\\Client\\Program.cs",
               "RelativeToolTip": "Client\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-15T17:41:04.979Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Igor\\Desktop\\ProjetoTS_GIT\\projetoTS\\ProjetoTS\\ChatTS\\Server\\Program.cs",
+              "RelativeDocumentMoniker": "Server\\Program.cs",
+              "ToolTip": "C:\\Users\\Igor\\Desktop\\ProjetoTS_GIT\\projetoTS\\ProjetoTS\\ChatTS\\Server\\Program.cs",
+              "RelativeToolTip": "Server\\Program.cs",
+              "ViewState": "AgIAAIgAAAAAAAAAAAAcwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-16T22:04:06.554Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\Igor\\Desktop\\ProjetoTS_GIT\\projetoTS\\ProjetoTS\\ChatTS\\Server\\models\\User.cs",
+              "RelativeDocumentMoniker": "Server\\models\\User.cs",
+              "ToolTip": "C:\\Users\\Igor\\Desktop\\ProjetoTS_GIT\\projetoTS\\ProjetoTS\\ChatTS\\Server\\models\\User.cs",
+              "RelativeToolTip": "Server\\models\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-16T21:31:13.661Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "ChatContext.cs",
-              "DocumentMoniker": "C:\\Users\\IPL\\Desktop\\IPL\\TS\\Projeto\\projetoTS\\ProjetoTS\\ChatTS\\Server\\models\\ChatContext.cs",
+              "DocumentMoniker": "C:\\Users\\Igor\\Desktop\\ProjetoTS_GIT\\projetoTS\\ProjetoTS\\ChatTS\\Server\\models\\ChatContext.cs",
               "RelativeDocumentMoniker": "Server\\models\\ChatContext.cs",
-              "ToolTip": "C:\\Users\\IPL\\Desktop\\IPL\\TS\\Projeto\\projetoTS\\ProjetoTS\\ChatTS\\Server\\models\\ChatContext.cs",
+              "ToolTip": "C:\\Users\\Igor\\Desktop\\ProjetoTS_GIT\\projetoTS\\ProjetoTS\\ChatTS\\Server\\models\\ChatContext.cs",
               "RelativeToolTip": "Server\\models\\ChatContext.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-16T20:39:18.061Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-16T20:39:18.061Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "frmLogin.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\IPL\\Desktop\\IPL\\TS\\Projeto\\projetoTS\\ProjetoTS\\ChatTS\\Client\\frmLogin.cs",
+              "DocumentMoniker": "C:\\Users\\Igor\\Desktop\\ProjetoTS_GIT\\projetoTS\\ProjetoTS\\ChatTS\\Client\\frmLogin.cs",
               "RelativeDocumentMoniker": "Client\\frmLogin.cs",
-              "ToolTip": "C:\\Users\\IPL\\Desktop\\IPL\\TS\\Projeto\\projetoTS\\ProjetoTS\\ChatTS\\Client\\frmLogin.cs [Design]",
+              "ToolTip": "C:\\Users\\Igor\\Desktop\\ProjetoTS_GIT\\projetoTS\\ProjetoTS\\ChatTS\\Client\\frmLogin.cs [Design]",
               "RelativeToolTip": "Client\\frmLogin.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-15T17:28:01.035Z",
