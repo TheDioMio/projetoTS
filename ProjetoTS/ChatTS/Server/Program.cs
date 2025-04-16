@@ -1,110 +1,212 @@
 ﻿using EI.SI;
+using MessagePack;
 using Server.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Data.Entity.Core.Mapping;
+using System.IO;
 using System.Net;
 using System.Net.Sockets;
-using System.Reflection;
-using System.Text;
+using System.Runtime.Remoting.Messaging;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Threading;
-using System.Threading.Tasks;
+using Shared;
 
+// a estrutura base do programa é a base da ficha 3 das aulas
+
+// de momento tem algumas mensagens a trabalhar para efeitos de debug
 namespace Server
 {
-    
     class Program
     {
-       
-       
-        //Criar novamente uma constante, tal como feito do lado do cliente.
         private const int PORT = 10000;
 
         static void Main(string[] args)
         {
-            // Definição das variáveis na função principal.
             IPEndPoint endpoint = new IPEndPoint(IPAddress.Any, PORT);
             TcpListener listener = new TcpListener(endpoint);
 
-            // Iniciar o listener; apresentação da primeira mensagem na linha de comandos e inicialização do contador.
             listener.Start();
             Console.WriteLine("SERVER READY");
             int clientCounter = 0;
 
-            //Criação do ciclo infinito de forma a que este esteja sempre em execução até ordem em contrário
+            //criar uma lista de clientes
             while (true)
             {
-                // Definição da variável client do tipo TcpClient
+                Console.WriteLine("Aguardando cliente...");
                 TcpClient client = listener.AcceptTcpClient();
-
-                // Incrementação do contador, de forma a que vá sempre somando 1 (+1)
+                Console.WriteLine("Cliente conectado.");
+                //TcpClient client = listener.AcceptTcpClient();
                 clientCounter++;
-
-                // Apresentação da mensagem indicative do nº do client na linha de comandos 
                 Console.WriteLine("Client {0} connected", clientCounter);
 
-                // Definição da variável clientHandler do tipo TcpClient
                 ClientHandler clientHandler = new ClientHandler(client, clientCounter);
                 clientHandler.Handle();
             }
         }
-
-
-
-
-
     }
-
     class ClientHandler
     {
-        // Definição das variáveis client e clientID.
         private TcpClient client;
         private int clientID;
+
         public ClientHandler(TcpClient client, int clientID)
         {
             this.client = client;
             this.clientID = clientID;
         }
+
         public void Handle()
         {
-            // Definição da variável thread e arranque da mesma
-            // Para relembrar: Threads são unidades de execução dentro de um processo; um conjunto de instruções.
-            Thread thread = new Thread(threadHandler);
+            Thread thread = new Thread(ThreadHandler);
             thread.Start();
         }
-        private void threadHandler()
+
+        private void ThreadHandler()
         {
-            // Definição das variáveis networkStream e protocolSI
             NetworkStream networkStream = this.client.GetStream();
             ProtocolSI protocolSI = new ProtocolSI();
 
-            // Ciclo a ser executado até ao fim da transmissão.
             while (protocolSI.GetCmdType() != ProtocolSICmdType.EOT)
             {
                 int bytesRead = networkStream.Read(protocolSI.Buffer, 0, protocolSI.Buffer.Length);
-                byte[] ack;
 
-                // "Alteração"/mudança entre a apresentação da mensagem e o fim da tranmissão.
                 switch (protocolSI.GetCmdType())
                 {
-                    //Dica do ALT
                     case ProtocolSICmdType.DATA:
-                        Console.WriteLine("Client " + clientID + ": " + protocolSI.GetStringFromData());
-                        ack = protocolSI.Make(ProtocolSICmdType.ACK);
-                        networkStream.Write(ack, 0, ack.Length);
+                        byte[] receivedData = protocolSI.GetData();
+                        try
+                        {
+                            // Desserializar a mensagem geral
+                            var generalMessage = MessagePack.MessagePackSerializer.Deserialize<GeneralMessage>(receivedData);
+
+                            switch (generalMessage.Type.ToLower())
+                            {
+                                //analisa o Type que vem na mensagem 
+                                //para criar novas funções é só enviar a mensagem com o type que se deseja e criar o case e a função
+                                case "roomcreate":
+                                    // Desserializar para MessageRoomCreate o BODY da mensagem
+                                    var messageRoomCreate = MessagePack.MessagePackSerializer.Deserialize<MessageRoomCreate>(generalMessage.Body);
+
+                                    //tratamento para ver se o campo nome vem correto
+                                    // podemos e devemos implementar a ver se a sala já existe na base de dados
+                                    if (string.IsNullOrEmpty(messageRoomCreate.Name))
+                                    {
+                                        var errorResponse = new ServerResponse
+                                        {
+                                            Success = false,
+                                            Message = "Erro: Nome da sala é inválido."
+                                        };
+                                        SendMessageToClient(networkStream, protocolSI, errorResponse);
+                                    }
+                                    else
+                                    {
+                                        // chama afunção CreateRoom para criar a Room que recebeu do cliente
+                                        CreateRoom(messageRoomCreate.Name);
+
+                                        //formata a mensagem de retorno para o cliente
+                                        var successResponse = new ServerResponse
+                                        {
+                                            Success = true,
+                                            Message = $"Sala '{messageRoomCreate.Name}' criada com sucesso."
+                                        };
+                                        SendMessageToClient(networkStream, protocolSI, successResponse);
+                                    }
+                                    break;
+
+                                default:
+                                    // caso o TYPE que vem nba mensagem não esteja tratado ou seja invalido
+                                    var unknownResponse = new ServerResponse
+                                    {
+                                        Success = false,
+                                        Message = "Erro: Tipo de mensagem desconhecido."
+                                    };
+                                    SendMessageToClient(networkStream, protocolSI, unknownResponse);
+                                    break;
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            //tratamento para caso alguma coisa corra mal
+                            var errorResponse = new ServerResponse
+                            {
+                                Success = false,
+                                Message = $"Erro ao processar a mensagem: {ex.Message}"
+                            };
+                            SendMessageToClient(networkStream, protocolSI, errorResponse);
+                        }
+
                         break;
 
+                        //quando o cliente termina a transmissão escreve na consola do servidor uma mensagem
                     case ProtocolSICmdType.EOT:
-                        Console.WriteLine("Ending Thread from Client {0}", clientID);
-                        ack = protocolSI.Make(ProtocolSICmdType.ACK);
-                        networkStream.Write(ack, 0, ack.Length);
+                        Console.WriteLine($"Finalizando cliente {clientID}");
                         break;
                 }
             }
-
-            // Fecho do networkStream e do cliente (TcpClient)
-            networkStream.Close();
-            client.Close();
         }
+
+
+        //função para enviar as mensagens de retorno para o cliente
+        private void SendMessageToClient(NetworkStream networkStream, ProtocolSI protocolSI, ServerResponse response)
+        {
+            byte[] serializedResponse = MessagePack.MessagePackSerializer.Serialize(response);
+            byte[] responsePacket = protocolSI.Make(ProtocolSICmdType.DATA, serializedResponse);
+            networkStream.Write(responsePacket, 0, responsePacket.Length);
+        }
+
+
+        //função para criar uma nova Room
+        private void CreateRoom(string name)
+        {
+            Console.WriteLine($"Criando sala: {name}");
+            // Aqui, a lógica de persistência pode ser implementada
+
+            using (var dbContext = new ChatContext())
+            { 
+            //                //falta validar
+
+            Room Room = new Room(name);
+            dbContext.Rooms.Add(Room);
+            dbContext.SaveChanges();
+            }
+        }
+    }
+}
+
+
+
+//estruturas partilhadas 
+// ou seja estas estruturas são transmitidas cliente<>servidor para se saber a estrutura a ser serializada
+// GeneralMessage é a primeira e é sempre igual depois consoante o que vai no Body é realizada a tarefa
+namespace Shared
+{
+    [MessagePackObject]
+    public struct GeneralMessage
+    {
+        [Key(0)]
+        public string Type { get; set; } // Identifica o tipo da mensagem
+
+        [Key(1)]
+        public byte[] Body { get; set; } // Dados serializados da mensagem específica
+    }
+
+    [MessagePackObject]
+    public struct MessageRoomCreate
+    {
+        [Key(0)]
+        public string Action { get; set; }
+
+        [Key(1)]
+        public string Name { get; set; }
+    }
+
+    [MessagePackObject]
+    public struct ServerResponse
+    {
+        [Key(0)]
+        public bool Success { get; set; }
+
+        [Key(1)]
+        public string Message { get; set; }
     }
 }
