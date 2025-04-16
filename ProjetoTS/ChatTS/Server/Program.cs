@@ -178,35 +178,35 @@ namespace Server
 //estruturas partilhadas 
 // ou seja estas estruturas são transmitidas cliente<>servidor para se saber a estrutura a ser serializada
 // GeneralMessage é a primeira e é sempre igual depois consoante o que vai no Body é realizada a tarefa
-namespace Shared
-{
-    [MessagePackObject]
-    public struct GeneralMessage
-    {
-        [Key(0)]
-        public string Type { get; set; } // Identifica o tipo da mensagem
+//namespace Shared
+//{
+//    [MessagePackObject]
+//    public struct GeneralMessage
+//    {
+//        [Key(0)]
+//        public string Type { get; set; } // Identifica o tipo da mensagem
 
-        [Key(1)]
-        public byte[] Body { get; set; } // Dados serializados da mensagem específica
-    }
+//        [Key(1)]
+//        public byte[] Body { get; set; } // Dados serializados da mensagem específica
+//    }
 
-    [MessagePackObject]
-    public struct MessageRoomCreate
-    {
-        [Key(0)]
-        public string Action { get; set; }
+//    [MessagePackObject]
+//    public struct MessageRoomCreate
+//    {
+//        [Key(0)]
+//        public string Action { get; set; }
 
-        [Key(1)]
-        public string Name { get; set; }
-    }
+//        [Key(1)]
+//        public string Name { get; set; }
+//    }
 
-    [MessagePackObject]
-    public struct ServerResponse
-    {
-        [Key(0)]
-        public bool Success { get; set; }
+//    [MessagePackObject]
+//    public struct ServerResponse
+//    {
+//        [Key(0)]
+//        public bool Success { get; set; }
 
-        [Key(1)]
-        public string Message { get; set; }
-    }
-}
+//        [Key(1)]
+//        public string Message { get; set; }
+//    }
+//}

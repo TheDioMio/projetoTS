@@ -17,7 +17,8 @@ namespace Client
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new frmLogin()); // INICIA PRIMEIRO A JANELA DE LOGIN
-            //Application.Run(new Form1());
+            Application.Run(new Form1());
+            
         }
     }
 }
