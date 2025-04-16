@@ -7,7 +7,6 @@ using System.Net;
 using System.Net.Sockets;
 using System.Windows.Forms;
 
-
 namespace Client
 {
     public partial class Form1 : Form
