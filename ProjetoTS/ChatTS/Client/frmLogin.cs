@@ -43,17 +43,32 @@ namespace Client
 
         private void btSubmit_Click(object sender, EventArgs e)
         {
-            if (txtConfirmPassRgst.Text != txtPassRgst.Text)
+            string username = txtUserRgst.Text.Trim();
+            string pass = txtPassRgst.Text;
+            string confirm = txtConfirmPassRgst.Text;
+            string nome = txtNomeRgst.Text;
+
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(pass) || string.IsNullOrEmpty(confirm) || string.IsNullOrEmpty(nome))
+            {
+                MessageBox.Show("Por favor preencha todos os campos.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (pass != confirm)
             {
                 MessageBox.Show("As passwords não coincidem.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-
+                txtPassRgst.Clear();
+                txtConfirmPassRgst.Clear();
+                txtPassRgst.Focus();
+                return;
             }
 
             /************ ESCONDE CAMPOS DE REGISTO ********/
+            txtNomeRgst.Visible = false;
             txtUserRgst.Visible = false;
             txtPassRgst.Visible = false;
             txtConfirmPassRgst.Visible = false;
+            labelNomeRgst.Visible = false;
             labelUserRgst.Visible = false;
             labelPassRgst.Visible = false;
             labelPassConfirm.Visible = false;
@@ -69,7 +84,7 @@ namespace Client
 
         private void btVoltar_Click(object sender, EventArgs e)
         {
-            
+
 
             txtUsername.Enabled = true;
             txtPassword.Enabled = true;

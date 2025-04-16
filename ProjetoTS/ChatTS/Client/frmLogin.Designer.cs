@@ -44,6 +44,8 @@
             this.txtConfirmPassRgst = new System.Windows.Forms.TextBox();
             this.labelThankYou = new System.Windows.Forms.Label();
             this.btVoltar = new System.Windows.Forms.Button();
+            this.txtNomeRgst = new System.Windows.Forms.TextBox();
+            this.labelNomeRgst = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btLogin
@@ -115,7 +117,7 @@
             // 
             // btSubmit
             // 
-            this.btSubmit.Location = new System.Drawing.Point(228, 402);
+            this.btSubmit.Location = new System.Drawing.Point(228, 455);
             this.btSubmit.Margin = new System.Windows.Forms.Padding(4);
             this.btSubmit.Name = "btSubmit";
             this.btSubmit.Size = new System.Drawing.Size(119, 28);
@@ -126,7 +128,7 @@
             // 
             // txtPassRgst
             // 
-            this.txtPassRgst.Location = new System.Drawing.Point(201, 308);
+            this.txtPassRgst.Location = new System.Drawing.Point(201, 342);
             this.txtPassRgst.Margin = new System.Windows.Forms.Padding(4);
             this.txtPassRgst.Name = "txtPassRgst";
             this.txtPassRgst.Size = new System.Drawing.Size(183, 22);
@@ -135,7 +137,7 @@
             // labelPassRgst
             // 
             this.labelPassRgst.AutoSize = true;
-            this.labelPassRgst.Location = new System.Drawing.Point(115, 312);
+            this.labelPassRgst.Location = new System.Drawing.Point(115, 346);
             this.labelPassRgst.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelPassRgst.Name = "labelPassRgst";
             this.labelPassRgst.Size = new System.Drawing.Size(70, 16);
@@ -144,7 +146,7 @@
             // 
             // txtUserRgst
             // 
-            this.txtUserRgst.Location = new System.Drawing.Point(201, 265);
+            this.txtUserRgst.Location = new System.Drawing.Point(201, 299);
             this.txtUserRgst.Margin = new System.Windows.Forms.Padding(4);
             this.txtUserRgst.Name = "txtUserRgst";
             this.txtUserRgst.Size = new System.Drawing.Size(183, 22);
@@ -153,7 +155,7 @@
             // labelUserRgst
             // 
             this.labelUserRgst.AutoSize = true;
-            this.labelUserRgst.Location = new System.Drawing.Point(115, 269);
+            this.labelUserRgst.Location = new System.Drawing.Point(115, 303);
             this.labelUserRgst.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelUserRgst.Name = "labelUserRgst";
             this.labelUserRgst.Size = new System.Drawing.Size(73, 16);
@@ -163,7 +165,7 @@
             // labelPassConfirm
             // 
             this.labelPassConfirm.AutoSize = true;
-            this.labelPassConfirm.Location = new System.Drawing.Point(55, 356);
+            this.labelPassConfirm.Location = new System.Drawing.Point(55, 390);
             this.labelPassConfirm.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelPassConfirm.Name = "labelPassConfirm";
             this.labelPassConfirm.Size = new System.Drawing.Size(130, 16);
@@ -172,7 +174,7 @@
             // 
             // txtConfirmPassRgst
             // 
-            this.txtConfirmPassRgst.Location = new System.Drawing.Point(201, 350);
+            this.txtConfirmPassRgst.Location = new System.Drawing.Point(201, 384);
             this.txtConfirmPassRgst.Margin = new System.Windows.Forms.Padding(4);
             this.txtConfirmPassRgst.Name = "txtConfirmPassRgst";
             this.txtConfirmPassRgst.Size = new System.Drawing.Size(183, 22);
@@ -181,7 +183,7 @@
             // labelThankYou
             // 
             this.labelThankYou.AutoSize = true;
-            this.labelThankYou.Location = new System.Drawing.Point(198, 382);
+            this.labelThankYou.Location = new System.Drawing.Point(198, 414);
             this.labelThankYou.Name = "labelThankYou";
             this.labelThankYou.Size = new System.Drawing.Size(160, 16);
             this.labelThankYou.TabIndex = 16;
@@ -190,7 +192,7 @@
             // 
             // btVoltar
             // 
-            this.btVoltar.Location = new System.Drawing.Point(228, 402);
+            this.btVoltar.Location = new System.Drawing.Point(228, 455);
             this.btVoltar.Margin = new System.Windows.Forms.Padding(4);
             this.btVoltar.Name = "btVoltar";
             this.btVoltar.Size = new System.Drawing.Size(119, 28);
@@ -200,11 +202,31 @@
             this.btVoltar.Visible = false;
             this.btVoltar.Click += new System.EventHandler(this.btVoltar_Click);
             // 
+            // txtNomeRgst
+            // 
+            this.txtNomeRgst.Location = new System.Drawing.Point(201, 259);
+            this.txtNomeRgst.Margin = new System.Windows.Forms.Padding(4);
+            this.txtNomeRgst.Name = "txtNomeRgst";
+            this.txtNomeRgst.Size = new System.Drawing.Size(183, 22);
+            this.txtNomeRgst.TabIndex = 19;
+            // 
+            // labelNomeRgst
+            // 
+            this.labelNomeRgst.AutoSize = true;
+            this.labelNomeRgst.Location = new System.Drawing.Point(115, 263);
+            this.labelNomeRgst.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelNomeRgst.Name = "labelNomeRgst";
+            this.labelNomeRgst.Size = new System.Drawing.Size(47, 16);
+            this.labelNomeRgst.TabIndex = 18;
+            this.labelNomeRgst.Text = "Nome:";
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(527, 203);
+            this.Controls.Add(this.txtNomeRgst);
+            this.Controls.Add(this.labelNomeRgst);
             this.Controls.Add(this.btVoltar);
             this.Controls.Add(this.labelThankYou);
             this.Controls.Add(this.txtConfirmPassRgst);
@@ -248,5 +270,7 @@
         private System.Windows.Forms.TextBox txtConfirmPassRgst;
         private System.Windows.Forms.Label labelThankYou;
         private System.Windows.Forms.Button btVoltar;
+        private System.Windows.Forms.TextBox txtNomeRgst;
+        private System.Windows.Forms.Label labelNomeRgst;
     }
 }

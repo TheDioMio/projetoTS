@@ -3,16 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\IPL\\Desktop\\IPL\\TS\\Projeto\\projetoTS\\ProjetoTS\\ChatTS\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D2A6FC05-2E85-4BAA-9D70-A42FAE9279F3}|Client\\Client.csproj|c:\\users\\ipl\\desktop\\ipl\\ts\\projeto\\projetots\\projetots\\chatts\\client\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{D2A6FC05-2E85-4BAA-9D70-A42FAE9279F3}|Client\\Client.csproj|C:\\Users\\IPL\\Desktop\\IPL\\TS\\Projeto\\projetoTS\\ProjetoTS\\ChatTS\\client\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D2A6FC05-2E85-4BAA-9D70-A42FAE9279F3}|Client\\Client.csproj|solutionrelative:client\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D2A6FC05-2E85-4BAA-9D70-A42FAE9279F3}|Client\\Client.csproj|c:\\users\\ipl\\desktop\\ipl\\ts\\projeto\\projetots\\projetots\\chatts\\client\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{D2A6FC05-2E85-4BAA-9D70-A42FAE9279F3}|Client\\Client.csproj|C:\\Users\\IPL\\Desktop\\IPL\\TS\\Projeto\\projetoTS\\ProjetoTS\\ChatTS\\client\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{D2A6FC05-2E85-4BAA-9D70-A42FAE9279F3}|Client\\Client.csproj|solutionrelative:client\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D2A6FC05-2E85-4BAA-9D70-A42FAE9279F3}|Client\\Client.csproj|c:\\users\\ipl\\desktop\\ipl\\ts\\projeto\\projetots\\projetots\\chatts\\client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{D2A6FC05-2E85-4BAA-9D70-A42FAE9279F3}|Client\\Client.csproj|C:\\Users\\IPL\\Desktop\\IPL\\TS\\Projeto\\projetoTS\\ProjetoTS\\ChatTS\\client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D2A6FC05-2E85-4BAA-9D70-A42FAE9279F3}|Client\\Client.csproj|solutionrelative:client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CF7BCF94-8A16-4DE7-9A35-39C9727BC591}|Server\\Server.csproj|c:\\users\\ipl\\desktop\\ipl\\ts\\projeto\\projetots\\projetots\\chatts\\server\\models\\chatcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CF7BCF94-8A16-4DE7-9A35-39C9727BC591}|Server\\Server.csproj|solutionrelative:server\\models\\chatcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -32,7 +36,7 @@
               "RelativeDocumentMoniker": "Client\\frmLogin.cs",
               "ToolTip": "C:\\Users\\IPL\\Desktop\\IPL\\TS\\Projeto\\projetoTS\\ProjetoTS\\ChatTS\\Client\\frmLogin.cs",
               "RelativeToolTip": "Client\\frmLogin.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADIAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAADkAAAAAAAAAAIAwwCoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-15T17:28:51.031Z",
               "IsPinned": true,
@@ -55,6 +59,19 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ChatContext.cs",
+              "DocumentMoniker": "C:\\Users\\IPL\\Desktop\\IPL\\TS\\Projeto\\projetoTS\\ProjetoTS\\ChatTS\\Server\\models\\ChatContext.cs",
+              "RelativeDocumentMoniker": "Server\\models\\ChatContext.cs",
+              "ToolTip": "C:\\Users\\IPL\\Desktop\\IPL\\TS\\Projeto\\projetoTS\\ProjetoTS\\ChatTS\\Server\\models\\ChatContext.cs",
+              "RelativeToolTip": "Server\\models\\ChatContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-16T20:39:18.061Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
