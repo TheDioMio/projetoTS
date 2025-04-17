@@ -11,6 +11,10 @@
       "RelativeMoniker": "D:0:0:{D2A6FC05-2E85-4BAA-9D70-A42FAE9279F3}|Client\\Client.csproj|solutionrelative:client\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{D2A6FC05-2E85-4BAA-9D70-A42FAE9279F3}|Client\\Client.csproj|C:\\Users\\IPL\\Desktop\\IPL\\TS\\Projeto\\projetoTS\\ProjetoTS\\ChatTS\\client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D2A6FC05-2E85-4BAA-9D70-A42FAE9279F3}|Client\\Client.csproj|solutionrelative:client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{D2A6FC05-2E85-4BAA-9D70-A42FAE9279F3}|Client\\Client.csproj|C:\\Users\\IPL\\Desktop\\IPL\\TS\\Projeto\\projetoTS\\ProjetoTS\\ChatTS\\client\\serverconnection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D2A6FC05-2E85-4BAA-9D70-A42FAE9279F3}|Client\\Client.csproj|solutionrelative:client\\serverconnection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -28,10 +32,6 @@
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/Server.Models.ChatContext/True/SqlTable/dbo.Users.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D2A6FC05-2E85-4BAA-9D70-A42FAE9279F3}|Client\\Client.csproj|C:\\Users\\IPL\\Desktop\\IPL\\TS\\Projeto\\projetoTS\\ProjetoTS\\ChatTS\\client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D2A6FC05-2E85-4BAA-9D70-A42FAE9279F3}|Client\\Client.csproj|solutionrelative:client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D2A6FC05-2E85-4BAA-9D70-A42FAE9279F3}|Client\\Client.csproj|C:\\Users\\IPL\\Desktop\\IPL\\TS\\Projeto\\projetoTS\\ProjetoTS\\ChatTS\\client\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -55,7 +55,7 @@
               "RelativeDocumentMoniker": "Client\\frmLogin.cs",
               "ToolTip": "C:\\Users\\IPL\\Desktop\\IPL\\TS\\Projeto\\projetoTS\\ProjetoTS\\ChatTS\\Client\\frmLogin.cs",
               "RelativeToolTip": "Client\\frmLogin.cs",
-              "ViewState": "AgIAAIAAAAAAAAAAAAAgwI0AAAA+AAAAAAAAAA==",
+              "ViewState": "AgIAAIEAAAAAIDMzMzPzv40AAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-15T17:28:51.031Z",
               "IsPinned": true,
@@ -63,13 +63,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 2,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\IPL\\Desktop\\IPL\\TS\\Projeto\\projetoTS\\ProjetoTS\\ChatTS\\Client\\Program.cs",
               "RelativeDocumentMoniker": "Client\\Program.cs",
               "ToolTip": "C:\\Users\\IPL\\Desktop\\IPL\\TS\\Projeto\\projetoTS\\ProjetoTS\\ChatTS\\Client\\Program.cs",
               "RelativeToolTip": "Client\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAOAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-15T17:41:04.979Z",
               "IsPinned": true,
@@ -81,13 +81,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "ServerConnection.cs",
               "DocumentMoniker": "C:\\Users\\IPL\\Desktop\\IPL\\TS\\Projeto\\projetoTS\\ProjetoTS\\ChatTS\\Client\\ServerConnection.cs",
               "RelativeDocumentMoniker": "Client\\ServerConnection.cs",
               "ToolTip": "C:\\Users\\IPL\\Desktop\\IPL\\TS\\Projeto\\projetoTS\\ProjetoTS\\ChatTS\\Client\\ServerConnection.cs",
               "RelativeToolTip": "Client\\ServerConnection.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAgwC0AAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAgwCIAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-16T23:00:05.751Z",
               "EditorCaption": ""
@@ -112,14 +112,14 @@
               "RelativeDocumentMoniker": "Server\\Program.cs",
               "ToolTip": "C:\\Users\\IPL\\Desktop\\IPL\\TS\\Projeto\\projetoTS\\ProjetoTS\\ChatTS\\Server\\Program.cs",
               "RelativeToolTip": "Server\\Program.cs",
-              "ViewState": "AgIAADoAAAAAAAAAAAAnwEcAAAAQAAAAAAAAAA==",
+              "ViewState": "AgIAADoAAAAAAAAAAAA5wEcAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-16T22:04:06.554Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "User.cs",
               "DocumentMoniker": "C:\\Users\\IPL\\Desktop\\IPL\\TS\\Projeto\\projetoTS\\ProjetoTS\\ChatTS\\Server\\models\\User.cs",
               "RelativeDocumentMoniker": "Server\\models\\User.cs",
@@ -132,7 +132,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "ChatContext.cs",
               "DocumentMoniker": "C:\\Users\\IPL\\Desktop\\IPL\\TS\\Projeto\\projetoTS\\ProjetoTS\\ChatTS\\Server\\models\\ChatContext.cs",
               "RelativeDocumentMoniker": "Server\\models\\ChatContext.cs",
@@ -145,7 +145,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "frmLogin.cs [Design]",
               "DocumentMoniker": "C:\\Users\\IPL\\Desktop\\IPL\\TS\\Projeto\\projetoTS\\ProjetoTS\\ChatTS\\Client\\frmLogin.cs",
               "RelativeDocumentMoniker": "Client\\frmLogin.cs",
@@ -157,7 +157,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "dbo.Users.sql",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/Server.Models.ChatContext/True/SqlTable/dbo.Users.sql",
               "ToolTip": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/Server.Models.ChatContext/True/SqlTable/dbo.Users.sql",

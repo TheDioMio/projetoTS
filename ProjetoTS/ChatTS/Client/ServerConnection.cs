@@ -22,7 +22,10 @@ namespace Shared
         {
             try
             {
-                client.Connect(IP, PORT); 
+                if (client.Connected)
+                    return; // Já está ligado, não faz nada
+
+                client.Connect(IP, PORT);
                 networkStream = client.GetStream();
                 protocolSI = new ProtocolSI();
             }

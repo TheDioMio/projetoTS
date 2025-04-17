@@ -139,7 +139,7 @@ namespace Client
                     MessageBox.Show("Registro realizado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 
-                    serverConnection = new ServerConnection();
+                    
 
                     // Esconde os campos de registro e mostra a mensagem de agradecimento
                     EsconderCamposRegistro();
