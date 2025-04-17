@@ -158,6 +158,14 @@ namespace Client
             MostrarCamposRegistro();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+
+        }
+
+        
+
         private void EsconderCamposRegistro()
         {
             txtNomeRgst.Visible = false;
@@ -190,6 +198,14 @@ namespace Client
             btSubmit.Visible = true;
             btVoltar.Visible = false;
             labelThankYou.Visible = false;
+        }
+
+        private void btRegist_Click(object sender, EventArgs e)
+        {
+            this.Height = 450;
+            txtUsername.Enabled = false;
+            txtPassword.Enabled = false;
+            btLogin.Enabled = false;
         }
     }
 }
