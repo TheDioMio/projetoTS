@@ -30,6 +30,20 @@ namespace Shared
             {
                 throw new Exception($"Erro ao conectar ao servidor: {ex.Message}");
             }
+
+            try
+            {
+                if (client.Connected)
+                    return;
+
+                client.Connect(IP, PORT);
+                networkStream = client.GetStream();
+                protocolSI = new ProtocolSI();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Erro ao conectar ao servidor: {ex.Message}");
+            }
         }
 
         public void SendMessage(byte[] message)

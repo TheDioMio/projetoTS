@@ -115,6 +115,60 @@ namespace Server
                                     break;
 
 
+                                case "register":
+                                    var messageRegister = MessagePackSerializer.Deserialize<RegisterRequest>(generalMessage.Body);
+
+                                    if (string.IsNullOrEmpty(messageRegister.Username) ||
+                                        string.IsNullOrEmpty(messageRegister.Password) ||
+                                        string.IsNullOrEmpty(messageRegister.Name))
+                                    {
+                                        var errorResponse = new ServerResponse
+                                        {
+                                            Success = false,
+                                            Message = "Erro: Todos os campos de registo são obrigatórios."
+                                        };
+                                        SendMessageToClient(networkStream, protocolSI, errorResponse);
+                                    }
+                                    else
+                                    {
+                                        using (var dbContext = new ChatContext())
+                                        {
+                                            var existingUser = dbContext.Users.FirstOrDefault(u => u.Username == messageRegister.Username);
+
+                                            if (existingUser != null)
+                                            {
+                                                var errorResponse = new ServerResponse
+                                                {
+                                                    Success = false,
+                                                    Message = "Erro: Nome de utilizador já existe."
+                                                };
+                                                SendMessageToClient(networkStream, protocolSI, errorResponse);
+                                            }
+                                            else
+                                            {
+                                                var newUser = new User
+                                                {
+                                                    Username = messageRegister.Username,
+                                                    Password = messageRegister.Password,
+                                                    Name = messageRegister.Name
+                                                };
+
+                                                dbContext.Users.Add(newUser);
+                                                dbContext.SaveChanges();
+
+                                                var successResponse = new ServerResponse
+                                                {
+                                                    Success = true,
+                                                    Message = "Registo efetuado com sucesso!"
+                                                };
+                                                SendMessageToClient(networkStream, protocolSI, successResponse);
+                                            }
+                                        }
+                                    }
+                                    break;
+
+
+
                                 case "login":
                                     var messageLogin = MessagePack.MessagePackSerializer.Deserialize<LoginRequest>(generalMessage.Body);
 

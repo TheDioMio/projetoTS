@@ -138,8 +138,15 @@ namespace Client
                 {
                     MessageBox.Show("Registro realizado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+
+                    serverConnection = new ServerConnection();
+
                     // Esconde os campos de registro e mostra a mensagem de agradecimento
                     EsconderCamposRegistro();
+
+                    
+
+
                 }
                 else
                 {
@@ -150,12 +157,15 @@ namespace Client
             {
                 MessageBox.Show($"Erro ao conectar: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            
         }
 
         private void btVoltar_Click(object sender, EventArgs e)
         {
             // Reseta os campos de registro e volta para o formulário de login
             MostrarCamposRegistro();
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -198,6 +208,7 @@ namespace Client
             btSubmit.Visible = true;
             btVoltar.Visible = false;
             labelThankYou.Visible = false;
+            this.Height = 220;
         }
 
         private void btRegist_Click(object sender, EventArgs e)
