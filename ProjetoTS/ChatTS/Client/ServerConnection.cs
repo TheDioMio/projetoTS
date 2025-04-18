@@ -5,6 +5,8 @@ using System.Net.Sockets;
 
 namespace Shared
 {
+    
+
     public class ServerConnection
     {
         private const int PORT = 10000;
@@ -12,6 +14,8 @@ namespace Shared
         private TcpClient client;
         private NetworkStream networkStream;
         private ProtocolSI protocolSI;
+
+        public static int UserSelected;
 
         public ServerConnection()
         {
@@ -24,20 +28,6 @@ namespace Shared
             {
                 if (client.Connected)
                     return; // Já está ligado, não faz nada
-
-                client.Connect(IP, PORT);
-                networkStream = client.GetStream();
-                protocolSI = new ProtocolSI();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Erro ao conectar ao servidor: {ex.Message}");
-            }
-
-            try
-            {
-                if (client.Connected)
-                    return;
 
                 client.Connect(IP, PORT);
                 networkStream = client.GetStream();
@@ -124,6 +114,9 @@ namespace Shared
 
         [Key(1)]
         public string Message { get; set; }
+
+        [Key(2)]
+        public int IdUser { get; set; }
     }
 
     [MessagePackObject]
@@ -134,6 +127,21 @@ namespace Shared
         //é a acção que se pretende fazer, e vai chamar uma função com o mesmo nome 
         [Key(1)]
         public string Name { get; set; }
+        [Key(2)]
+        public int IdUser { get; set; }
+    }
+
+    [MessagePackObject]
+    public class UserListFormat
+    {
+        [Key(0)]
+        public int Id { get; set; }
+
+        [Key(1)]
+        public string Name { get; set; }
+
+        [Key(2)]
+        public bool State { get; set; }
     }
 
 }
