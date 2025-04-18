@@ -11,6 +11,8 @@ using System.Runtime.Remoting.Messaging;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Threading;
 using Shared;
+using Server.models;
+using System.Collections.Generic;
 
 // a estrutura base do programa é a base da ficha 3 das aulas
 
@@ -87,7 +89,7 @@ namespace Server
                                 case "roomcreate":
                                     // Desserializar para MessageRoomCreate o BODY da mensagem
                                     var messageRoomCreate = MessagePack.MessagePackSerializer.Deserialize<MessageRoomCreate>(generalMessage.Body);
-
+                                    Console.WriteLine($"UserId recebido no servidor: {messageRoomCreate.IdUser}");
                                     //tratamento para ver se o campo nome vem correto
                                     // podemos e devemos implementar a ver se a sala já existe na base de dados
                                     if (string.IsNullOrEmpty(messageRoomCreate.Name))
@@ -102,7 +104,7 @@ namespace Server
                                     else
                                     {
                                         // chama afunção CreateRoom para criar a Room que recebeu do cliente
-                                        CreateRoom(messageRoomCreate.Name);
+                                        CreateRoom(messageRoomCreate.Name, messageRoomCreate.IdUser);
 
                                         //formata a mensagem de retorno para o cliente
                                         var successResponse = new ServerResponse
@@ -150,19 +152,106 @@ namespace Server
                                                 var successResponse = new ServerResponse
                                                 {
                                                     Success = true,
-                                                    Message = "Bem vindo, "+user.Name
+                                                    Message = "Bem vindo, "+user.Name,
+                                                    IdUser = user.Id
                                                 };
                                                 SendMessageToClient(networkStream, protocolSI, successResponse);
                                             }
                                         }
                                     }
-
-
-
-
                                     break;
+
+                                case "register":
+                                    var messageRegister = MessagePackSerializer.Deserialize<RegisterRequest>(generalMessage.Body);
+
+                                    if (string.IsNullOrEmpty(messageRegister.Username) ||
+                                        string.IsNullOrEmpty(messageRegister.Password) ||
+                                        string.IsNullOrEmpty(messageRegister.Name))
+                                    {
+                                        var errorResponse = new ServerResponse
+                                        {
+                                            Success = false,
+                                            Message = "Erro: Todos os campos de registo são obrigatórios."
+                                        };
+                                        SendMessageToClient(networkStream, protocolSI, errorResponse);
+                                    }
+                                    else
+                                    {
+                                        using (var dbContext = new ChatContext())
+                                        {
+                                            var existingUser = dbContext.Users.FirstOrDefault(u => u.Username == messageRegister.Username);
+
+                                            if (existingUser != null)
+                                            {
+                                                var errorResponse = new ServerResponse
+                                                {
+                                                    Success = false,
+                                                    Message = "Erro: Nome de utilizador já existe."
+                                                };
+                                                SendMessageToClient(networkStream, protocolSI, errorResponse);
+                                            }
+                                            else
+                                            {
+                                                var newUser = new User
+                                                {
+                                                    Username = messageRegister.Username,
+                                                    Password = messageRegister.Password,
+                                                    Name = messageRegister.Name
+                                                };
+
+                                                dbContext.Users.Add(newUser);
+                                                dbContext.SaveChanges();
+
+                                                var successResponse = new ServerResponse
+                                                {
+                                                    Success = true,
+                                                    Message = "Registo efetuado com sucesso!"
+                                                };
+                                                SendMessageToClient(networkStream, protocolSI, successResponse);
+                                            }
+                                        }
+                                    }
+                                    break;
+                                    
+                                case "allusers":
+
+                                    // Obtém a lista de usuários do banco de dados.
+                                    using (var dbContext = new ChatContext())
+                                    {
+                                       // List<User> users = dbContext.Users.ToList();
+
+                                       List<UserListFormat> usersList = dbContext.Users
+                                            .Select(u => new UserListFormat
+                                            {
+                                                Id = u.Id,
+                                                Name = u.Name,
+                                                State = u.State
+                                            })
+                                            .ToList();
+                                        // Serializa a lista de usuários usando MessagePack.
+                                        byte[] serializedUsers = MessagePack.MessagePackSerializer.Serialize(usersList);
+
+                                        // Cria um objeto de mensagem geral para encapsular a lista.
+                                        GeneralMessage Message = new GeneralMessage
+                                        {
+                                            Type = "allusers", // Tipo para identificar que esta mensagem contém todos os usuários.
+                                            Body = serializedUsers
+                                        };
+
+                                        // Serializa a mensagem geral.
+                                        byte[] serializedGeneralMessage = MessagePack.MessagePackSerializer.Serialize(Message);
+
+                                        
+                                        byte[] packet = protocolSI.Make(ProtocolSICmdType.DATA, serializedGeneralMessage);
+
+                                        // Envia o pacote para o cliente via NetworkStream.
+                                        networkStream.Write(packet, 0, packet.Length);
+                                    }
+                                    break;
+
+                                   
                                 default:
-                                    // caso o TYPE que vem nba mensagem não esteja tratado ou seja invalido
+                                    // caso o TYPE que vem na mensagem não esteja tratado ou seja invalido
                                     var unknownResponse = new ServerResponse
                                     {
                                         Success = false,
@@ -204,20 +293,40 @@ namespace Server
 
 
         //função para criar uma nova Room
-        private void CreateRoom(string name)
+        private void CreateRoom(string name, int idUser)
         {
             Console.WriteLine($"Criando sala: {name}");
-            // Aqui, a lógica de persistência pode ser implementada
+            
 
             using (var dbContext = new ChatContext())
             { 
-            //                //falta validar
+            // falta validar
+                Room Room = new Room(name);
+                dbContext.Rooms.Add(Room);
+                dbContext.SaveChanges();
+                int roomId = Room.Id;
 
-            Room Room = new Room(name);
-            dbContext.Rooms.Add(Room);
-            dbContext.SaveChanges();
+
+                //depois de criada a sala agora temos de criar a associacao de user com a sala
+
+                UserRoom UserRoom = new UserRoom { 
+                    IdUser = idUser,
+                    IdRoom = roomId,
+                    UserType = "A",
+                    DateCreated = DateTime.Now,
+                    UserState = "Active"
+
+                };
+                
+                dbContext.UserRooms.Add(UserRoom);
+                dbContext.SaveChanges();
             }
         }
+
+
+        
+
+
     }
 }
 
@@ -330,6 +439,10 @@ namespace Shared
 
         [Key(1)]
         public string Message { get; set; }
+
+        [Key(2)]
+        public int IdUser { get; set; }
+
     }
 
     [MessagePackObject]
@@ -340,40 +453,24 @@ namespace Shared
         //é a acção que se pretende fazer, e vai chamar uma função com o mesmo nome 
         [Key(1)]
         public string Name { get; set; }
+        [Key(2)]
+        public int IdUser { get; set; }
     }
+
+    [MessagePackObject]
+    public class UserListFormat
+    {
+        [Key(0)]
+        public int Id { get; set; }
+
+        [Key(1)]
+        public string Name { get; set; }
+
+        [Key(2)]
+        public bool State { get; set; }
+    }
+
 
 }
 
 
-//namespace Shared
-//{
-//    [MessagePackObject]
-//    public struct GeneralMessage
-//    {
-//        [Key(0)]
-//        public string Type { get; set; } // Identifica o tipo da mensagem
-
-//        [Key(1)]
-//        public byte[] Body { get; set; } // Dados serializados da mensagem específica
-//    }
-
-//    [MessagePackObject]
-//    public struct MessageRoomCreate
-//    {
-//        [Key(0)]
-//        public string Action { get; set; }
-
-//        [Key(1)]
-//        public string Name { get; set; }
-//    }
-
-//    [MessagePackObject]
-//    public struct ServerResponse
-//    {
-//        [Key(0)]
-//        public bool Success { get; set; }
-
-//        [Key(1)]
-//        public string Message { get; set; }
-//    }
-//}

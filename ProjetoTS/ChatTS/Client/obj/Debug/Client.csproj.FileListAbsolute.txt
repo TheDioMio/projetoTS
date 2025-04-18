@@ -43,3 +43,4 @@ C:\Users\Igor\Desktop\ProjetoTS_GIT\projetoTS\ProjetoTS\ChatTS\Client\bin\Debug\
 C:\Users\Igor\Desktop\ProjetoTS_GIT\projetoTS\ProjetoTS\ChatTS\Client\bin\Debug\Microsoft.NET.StringTools.pdb
 C:\Users\Igor\Desktop\ProjetoTS_GIT\projetoTS\ProjetoTS\ChatTS\Client\bin\Debug\Microsoft.NET.StringTools.xml
 C:\Users\Igor\Desktop\ProjetoTS_GIT\projetoTS\ProjetoTS\ChatTS\Client\obj\Debug\Client.csproj.Up2Date
+C:\Users\Igor\Desktop\ProjetoTS_GIT\projetoTS\ProjetoTS\ChatTS\Client\obj\Debug\Client.Form1.resources
