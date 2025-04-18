@@ -4,6 +4,7 @@ using Server.Models;
 using System;
 using System.Data.Entity.Core.Mapping;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Runtime.Remoting.Messaging;
@@ -113,6 +114,107 @@ namespace Server
                                     }
                                     break;
 
+
+                                case "register":
+                                    var messageRegister = MessagePackSerializer.Deserialize<RegisterRequest>(generalMessage.Body);
+
+                                    if (string.IsNullOrEmpty(messageRegister.Username) ||
+                                        string.IsNullOrEmpty(messageRegister.Password) ||
+                                        string.IsNullOrEmpty(messageRegister.Name))
+                                    {
+                                        var errorResponse = new ServerResponse
+                                        {
+                                            Success = false,
+                                            Message = "Erro: Todos os campos de registo são obrigatórios."
+                                        };
+                                        SendMessageToClient(networkStream, protocolSI, errorResponse);
+                                    }
+                                    else
+                                    {
+                                        using (var dbContext = new ChatContext())
+                                        {
+                                            var existingUser = dbContext.Users.FirstOrDefault(u => u.Username == messageRegister.Username);
+
+                                            if (existingUser != null)
+                                            {
+                                                var errorResponse = new ServerResponse
+                                                {
+                                                    Success = false,
+                                                    Message = "Erro: Nome de utilizador já existe."
+                                                };
+                                                SendMessageToClient(networkStream, protocolSI, errorResponse);
+                                            }
+                                            else
+                                            {
+                                                var newUser = new User
+                                                {
+                                                    Username = messageRegister.Username,
+                                                    Password = messageRegister.Password,
+                                                    Name = messageRegister.Name
+                                                };
+
+                                                dbContext.Users.Add(newUser);
+                                                dbContext.SaveChanges();
+
+                                                var successResponse = new ServerResponse
+                                                {
+                                                    Success = true,
+                                                    Message = "Registo efetuado com sucesso!"
+                                                };
+                                                SendMessageToClient(networkStream, protocolSI, successResponse);
+                                            }
+                                        }
+                                    }
+                                    break;
+
+
+
+                                case "login":
+                                    var messageLogin = MessagePack.MessagePackSerializer.Deserialize<LoginRequest>(generalMessage.Body);
+
+                                    if(string.IsNullOrEmpty(messageLogin.Username)|| string.IsNullOrEmpty(messageLogin.Password))
+                                    {
+                                        var errorResponse = new ServerResponse
+                                        {
+                                            Success = false,
+                                            Message = "Erro: Credênciais inválidas."
+                                        };
+                                        SendMessageToClient(networkStream, protocolSI, errorResponse);
+                                    }
+                                    else
+                                    {
+                                        using (var dbContext = new ChatContext()) // Substitua "YourDbContext" pelo nome do seu DbContext
+                                        {
+                                            // Procurar o usuário na tabela Users com base no username e password
+                                            var user = dbContext.Users.FirstOrDefault(u => u.Username == messageLogin.Username && u.Password == messageLogin.Password);
+
+                                            if (user == null)
+                                            {
+                                                // Usuário não encontrado ou credenciais incorretas
+                                                var errorResponse = new ServerResponse
+                                                {
+                                                    Success = false,
+                                                    Message = "Erro: Credenciais inválidas."
+                                                };
+                                                SendMessageToClient(networkStream, protocolSI, errorResponse);
+                                            }
+                                            else
+                                            {
+                                                // Usuário encontrado - login bem-sucedido
+                                                var successResponse = new ServerResponse
+                                                {
+                                                    Success = true,
+                                                    Message = "Bem vindo, "+user.Name
+                                                };
+                                                SendMessageToClient(networkStream, protocolSI, successResponse);
+                                            }
+                                        }
+                                    }
+
+
+
+
+                                    break;
                                 default:
                                     // caso o TYPE que vem nba mensagem não esteja tratado ou seja invalido
                                     var unknownResponse = new ServerResponse
@@ -180,24 +282,98 @@ namespace Server
 // GeneralMessage é a primeira e é sempre igual depois consoante o que vai no Body é realizada a tarefa
 namespace Shared
 {
+    public class ServerConnection
+    {
+        private const int PORT = 10000;
+        private const string IP = "127.0.0.1";
+        private TcpClient client;
+        private NetworkStream networkStream;
+        private ProtocolSI protocolSI;
+
+        public ServerConnection()
+        {
+            client = new TcpClient();
+        }
+
+        public void Connect()
+        {
+            try
+            {
+                client.Connect(IP, PORT);
+                networkStream = client.GetStream();
+                protocolSI = new ProtocolSI();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Erro ao conectar ao servidor: {ex.Message}");
+            }
+        }
+
+        public void SendMessage(byte[] message)
+        {
+            try
+            {
+                networkStream.Write(message, 0, message.Length);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Erro ao enviar mensagem: {ex.Message}");
+            }
+        }
+
+        public byte[] ReceiveMessage()
+        {
+            try
+            {
+                networkStream.Read(protocolSI.Buffer, 0, protocolSI.Buffer.Length);
+                return protocolSI.GetData();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Erro ao receber mensagem: {ex.Message}");
+            }
+        }
+
+        public void Disconnect()
+        {
+            networkStream.Close();
+            client.Close();
+        }
+    }
+
+    //estruturas gerais 
+
+    [MessagePackObject]
+    public struct LoginRequest
+    {
+        [Key(0)]
+        public string Username { get; set; }
+
+        [Key(1)]
+        public string Password { get; set; }
+    }
+
+    [MessagePackObject]
+    public struct RegisterRequest
+    {
+        [Key(0)]
+        public string Username { get; set; }
+
+        [Key(1)]
+        public string Password { get; set; }
+
+        [Key(2)]
+        public string Name { get; set; }
+    }
+
     [MessagePackObject]
     public struct GeneralMessage
     {
         [Key(0)]
-        public string Type { get; set; } // Identifica o tipo da mensagem
+        public string Type { get; set; }
 
         [Key(1)]
-        public byte[] Body { get; set; } // Dados serializados da mensagem específica
-    }
-
-    [MessagePackObject]
-    public struct MessageRoomCreate
-    {
-        [Key(0)]
-        public string Action { get; set; }
-
-        [Key(1)]
-        public string Name { get; set; }
+        public byte[] Body { get; set; }
     }
 
     [MessagePackObject]
@@ -209,4 +385,49 @@ namespace Shared
         [Key(1)]
         public string Message { get; set; }
     }
+
+    [MessagePackObject]
+    public struct MessageRoomCreate
+    {
+        [Key(0)]
+        public string Action { get; set; }
+        //é a acção que se pretende fazer, e vai chamar uma função com o mesmo nome 
+        [Key(1)]
+        public string Name { get; set; }
+    }
+
 }
+
+
+//namespace Shared
+//{
+//    [MessagePackObject]
+//    public struct GeneralMessage
+//    {
+//        [Key(0)]
+//        public string Type { get; set; } // Identifica o tipo da mensagem
+
+//        [Key(1)]
+//        public byte[] Body { get; set; } // Dados serializados da mensagem específica
+//    }
+
+//    [MessagePackObject]
+//    public struct MessageRoomCreate
+//    {
+//        [Key(0)]
+//        public string Action { get; set; }
+
+//        [Key(1)]
+//        public string Name { get; set; }
+//    }
+
+//    [MessagePackObject]
+//    public struct ServerResponse
+//    {
+//        [Key(0)]
+//        public bool Success { get; set; }
+
+//        [Key(1)]
+//        public string Message { get; set; }
+//    }
+//}
