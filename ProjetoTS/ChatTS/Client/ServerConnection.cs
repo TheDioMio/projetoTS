@@ -16,6 +16,7 @@ namespace Shared
         private ProtocolSI protocolSI;
 
         public static int UserSelected;
+        public static int RoomSelected;
 
         public ServerConnection()
         {
@@ -142,6 +143,99 @@ namespace Shared
 
         [Key(2)]
         public bool State { get; set; }
+
+        public override string ToString()
+        {
+            return Name +"("+State+")";
+        }
+    }
+
+    [MessagePackObject]
+    public class UserRoomListFormat
+    {
+        [Key(0)]
+        public int Id { get; set; }
+
+        [Key(1)]
+        public string Name { get; set; }
+
+        [Key(2)]
+        public bool State { get; set; }
+
+        public override string ToString()
+        {
+            return Name + "(" + State + ")";
+        }
+    }
+
+    [MessagePackObject]
+    public class usersInRoomFormat
+    {
+        [Key(0)]
+        public int RoomId { get; set; }
+    }
+
+
+    [MessagePackObject]
+    public class usersAddRoomFormat
+    {
+        [Key(0)]
+        public int RoomId { get; set; }
+        [Key(1)]
+        public int UserId { get; set; }
+    }
+
+
+    [MessagePackObject]
+    public class messageFormat
+    {
+        [Key(0)]
+        public int RoomId { get; set; }
+        [Key(1)]
+        public int UserId { get; set; }
+        [Key(2)]
+        public string Text { get; set; }
+        [Key(3)]
+        public DateTime Date { get; set; }
+
+        public override string ToString()
+        {
+            return Text;
+        }
+    }
+
+   
+
+    [MessagePackObject]
+    public class messagesInRoomFormat
+    {
+        [Key(0)]
+        public int RoomId { get; set; }
+    }
+
+
+
+
+    [MessagePackObject]
+    public class roomsOfUserFormat
+    {
+        [Key(0)]
+        public int UserId { get; set; }
+    }
+
+    [MessagePackObject]
+    public class RoomListFormat
+    {
+        [Key(0)]
+        public int Id { get; set; }
+
+        [Key(1)]
+        public string Name { get; set; }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 
 }

@@ -37,17 +37,18 @@
             this.listBoxMessages = new System.Windows.Forms.ListBox();
             this.listBoxUserRoom = new System.Windows.Forms.ListBox();
             this.listBoxUsers = new System.Windows.Forms.ListBox();
+            this.menuListBoxUsers = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.adicionarASalaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.enviarMensagemPrivadaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxMessage = new System.Windows.Forms.TextBox();
             this.buttonSendMessage = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.adicionarASalaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.enviarMensagemPrivadaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button1 = new System.Windows.Forms.Button();
-            this.contextMenuStrip1.SuspendLayout();
+            this.button2 = new System.Windows.Forms.Button();
+            this.menuListBoxUsers.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonQuit
@@ -94,6 +95,7 @@
             this.listBoxRooms.Name = "listBoxRooms";
             this.listBoxRooms.Size = new System.Drawing.Size(186, 342);
             this.listBoxRooms.TabIndex = 8;
+            this.listBoxRooms.SelectedIndexChanged += new System.EventHandler(this.listBoxRooms_SelectedIndexChanged);
             // 
             // listBoxMessages
             // 
@@ -113,11 +115,33 @@
             // 
             // listBoxUsers
             // 
+            this.listBoxUsers.ContextMenuStrip = this.menuListBoxUsers;
             this.listBoxUsers.FormattingEnabled = true;
             this.listBoxUsers.Location = new System.Drawing.Point(586, 208);
             this.listBoxUsers.Name = "listBoxUsers";
             this.listBoxUsers.Size = new System.Drawing.Size(187, 147);
             this.listBoxUsers.TabIndex = 11;
+            // 
+            // menuListBoxUsers
+            // 
+            this.menuListBoxUsers.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.adicionarASalaToolStripMenuItem,
+            this.enviarMensagemPrivadaToolStripMenuItem});
+            this.menuListBoxUsers.Name = "contextMenuStrip1";
+            this.menuListBoxUsers.Size = new System.Drawing.Size(237, 52);
+            // 
+            // adicionarASalaToolStripMenuItem
+            // 
+            this.adicionarASalaToolStripMenuItem.Name = "adicionarASalaToolStripMenuItem";
+            this.adicionarASalaToolStripMenuItem.Size = new System.Drawing.Size(236, 24);
+            this.adicionarASalaToolStripMenuItem.Text = "Adicionar a Sala";
+            this.adicionarASalaToolStripMenuItem.Click += new System.EventHandler(this.adicionarASalaToolStripMenuItem_Click);
+            // 
+            // enviarMensagemPrivadaToolStripMenuItem
+            // 
+            this.enviarMensagemPrivadaToolStripMenuItem.Name = "enviarMensagemPrivadaToolStripMenuItem";
+            this.enviarMensagemPrivadaToolStripMenuItem.Size = new System.Drawing.Size(236, 24);
+            this.enviarMensagemPrivadaToolStripMenuItem.Text = "Enviar Mensagem Privada";
             // 
             // label1
             // 
@@ -146,13 +170,13 @@
             this.label3.TabIndex = 14;
             this.label3.Text = "Todos os Amigos";
             // 
-            // textBox1
+            // textBoxMessage
             // 
-            this.textBox1.Location = new System.Drawing.Point(214, 387);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(364, 21);
-            this.textBox1.TabIndex = 15;
+            this.textBoxMessage.Location = new System.Drawing.Point(214, 387);
+            this.textBoxMessage.Multiline = true;
+            this.textBoxMessage.Name = "textBoxMessage";
+            this.textBoxMessage.Size = new System.Drawing.Size(364, 21);
+            this.textBoxMessage.TabIndex = 15;
             // 
             // buttonSendMessage
             // 
@@ -162,6 +186,7 @@
             this.buttonSendMessage.TabIndex = 16;
             this.buttonSendMessage.Text = "Enviar";
             this.buttonSendMessage.UseVisualStyleBackColor = true;
+            this.buttonSendMessage.Click += new System.EventHandler(this.buttonSendMessage_Click);
             // 
             // label4
             // 
@@ -172,45 +197,36 @@
             this.label4.TabIndex = 17;
             this.label4.Text = "Mensagem";
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.adicionarASalaToolStripMenuItem,
-            this.enviarMensagemPrivadaToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(237, 52);
-            // 
-            // adicionarASalaToolStripMenuItem
-            // 
-            this.adicionarASalaToolStripMenuItem.Name = "adicionarASalaToolStripMenuItem";
-            this.adicionarASalaToolStripMenuItem.Size = new System.Drawing.Size(236, 24);
-            this.adicionarASalaToolStripMenuItem.Text = "Adicionar a Sala";
-            // 
-            // enviarMensagemPrivadaToolStripMenuItem
-            // 
-            this.enviarMensagemPrivadaToolStripMenuItem.Name = "enviarMensagemPrivadaToolStripMenuItem";
-            this.enviarMensagemPrivadaToolStripMenuItem.Size = new System.Drawing.Size(236, 24);
-            this.enviarMensagemPrivadaToolStripMenuItem.Text = "Enviar Mensagem Privada";
-            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(500, 19);
+            this.button1.Location = new System.Drawing.Point(921, 44);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 27);
+            this.button1.Size = new System.Drawing.Size(82, 27);
             this.button1.TabIndex = 19;
-            this.button1.Text = "button1";
+            this.button1.Text = "AllUsers";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(923, 83);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(80, 26);
+            this.button2.TabIndex = 20;
+            this.button2.Text = "UsersInRoom";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(785, 447);
+            this.ClientSize = new System.Drawing.Size(1052, 447);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.buttonSendMessage);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxMessage);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -227,7 +243,7 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Shown += new System.EventHandler(this.Form1_Shown);
-            this.contextMenuStrip1.ResumeLayout(false);
+            this.menuListBoxUsers.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -246,13 +262,14 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxMessage;
         private System.Windows.Forms.Button buttonSendMessage;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ContextMenuStrip menuListBoxUsers;
         private System.Windows.Forms.ToolStripMenuItem adicionarASalaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem enviarMensagemPrivadaToolStripMenuItem;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }
 
