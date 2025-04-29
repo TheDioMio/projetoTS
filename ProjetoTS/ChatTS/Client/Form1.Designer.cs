@@ -34,7 +34,7 @@
             this.textBoxRoomName = new System.Windows.Forms.TextBox();
             this.labelMessage = new System.Windows.Forms.Label();
             this.listBoxRooms = new System.Windows.Forms.ListBox();
-            this.listBoxMessages = new System.Windows.Forms.ListBox();
+            this.listBoxMessages_old = new System.Windows.Forms.ListBox();
             this.listBoxUserRoom = new System.Windows.Forms.ListBox();
             this.listBoxUsers = new System.Windows.Forms.ListBox();
             this.menuListBoxUsers = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -48,6 +48,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.listBoxMessages = new System.Windows.Forms.RichTextBox();
             this.menuListBoxUsers.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -97,13 +100,14 @@
             this.listBoxRooms.TabIndex = 8;
             this.listBoxRooms.SelectedIndexChanged += new System.EventHandler(this.listBoxRooms_SelectedIndexChanged);
             // 
-            // listBoxMessages
+            // listBoxMessages_old
             // 
-            this.listBoxMessages.FormattingEnabled = true;
-            this.listBoxMessages.Location = new System.Drawing.Point(208, 69);
-            this.listBoxMessages.Name = "listBoxMessages";
-            this.listBoxMessages.Size = new System.Drawing.Size(370, 290);
-            this.listBoxMessages.TabIndex = 9;
+            this.listBoxMessages_old.FormattingEnabled = true;
+            this.listBoxMessages_old.Location = new System.Drawing.Point(208, 69);
+            this.listBoxMessages_old.Name = "listBoxMessages_old";
+            this.listBoxMessages_old.Size = new System.Drawing.Size(370, 290);
+            this.listBoxMessages_old.TabIndex = 9;
+            this.listBoxMessages_old.Visible = false;
             // 
             // listBoxUserRoom
             // 
@@ -199,29 +203,61 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(921, 44);
+            this.button1.Location = new System.Drawing.Point(814, 67);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(82, 27);
-            this.button1.TabIndex = 19;
-            this.button1.Text = "AllUsers";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 18;
+            this.button1.Text = "Rooms";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(923, 83);
+            this.button2.Location = new System.Drawing.Point(814, 108);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(80, 26);
-            this.button2.TabIndex = 20;
-            this.button2.Text = "UsersInRoom";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 19;
+            this.button2.Text = "Messages";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(814, 155);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 20;
+            this.button3.Text = "All Users";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(814, 192);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(91, 23);
+            this.button4.TabIndex = 21;
+            this.button4.Text = "Users in Room";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // listBoxMessages
+            // 
+            this.listBoxMessages.BackColor = System.Drawing.SystemColors.InfoText;
+            this.listBoxMessages.Location = new System.Drawing.Point(208, 70);
+            this.listBoxMessages.Name = "listBoxMessages";
+            this.listBoxMessages.Size = new System.Drawing.Size(370, 290);
+            this.listBoxMessages.TabIndex = 22;
+            this.listBoxMessages.Text = "";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1052, 447);
+            this.ClientSize = new System.Drawing.Size(917, 447);
+            this.Controls.Add(this.listBoxMessages);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);
@@ -232,7 +268,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listBoxUsers);
             this.Controls.Add(this.listBoxUserRoom);
-            this.Controls.Add(this.listBoxMessages);
+            this.Controls.Add(this.listBoxMessages_old);
             this.Controls.Add(this.listBoxRooms);
             this.Controls.Add(this.buttonQuit);
             this.Controls.Add(this.buttonSend);
@@ -240,8 +276,7 @@
             this.Controls.Add(this.labelMessage);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Shown += new System.EventHandler(this.Form1_Shown);
             this.menuListBoxUsers.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -256,7 +291,7 @@
         private System.Windows.Forms.TextBox textBoxRoomName;
         private System.Windows.Forms.Label labelMessage;
         private System.Windows.Forms.ListBox listBoxRooms;
-        private System.Windows.Forms.ListBox listBoxMessages;
+        private System.Windows.Forms.ListBox listBoxMessages_old;
         private System.Windows.Forms.ListBox listBoxUserRoom;
         private System.Windows.Forms.ListBox listBoxUsers;
         private System.Windows.Forms.Label label1;
@@ -270,6 +305,9 @@
         private System.Windows.Forms.ToolStripMenuItem enviarMensagemPrivadaToolStripMenuItem;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.RichTextBox listBoxMessages;
     }
 }
 
