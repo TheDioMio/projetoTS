@@ -57,23 +57,30 @@ namespace Client
                 byte[] response = serverConnection.ReceiveMessage();
 
                 // Desserializa a resposta
-                var serverResponse = MessagePack.MessagePackSerializer.Deserialize<ServerResponse>(response);
+                var serverResponse = MessagePack.MessagePackSerializer.Deserialize<GeneralMessage>(response);
 
-                if (serverResponse.Success)
+                if (serverResponse.Type == "login")
                 {
-                    MessageBox.Show("Login bem-sucedido!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    ServerConnection.UserSelected = serverResponse.IdUser;
+                    var serverResponseBody = MessagePack.MessagePackSerializer.Deserialize<ServerResponse>(serverResponse.Body);
+                    if (serverResponseBody.Success)
+                    {
+                        MessageBox.Show("Login bem-sucedido!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        ServerConnection.UserSelected = serverResponseBody.IdUser;
 
-                    MessageBox.Show(serverResponse.IdUser.ToString(), "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    // Abre o Form1 e passa a instância de conexão
-                    Form1 form1 = new Form1(serverConnection);
-                    form1.Show();
-                    this.Hide(); // Esconde o formulário de login
+                        //MessageBox.Show(serverResponse.IdUser.ToString(), "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        // Abre o Form1 e passa a instância de conexão
+                        Form1 form1 = new Form1(serverConnection);
+                        form1.Show();
+                        this.Hide(); // Esconde o formulário de login
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Falha no login: {serverResponseBody.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
                 }
-                else
-                {
-                    MessageBox.Show($"Falha no login: {serverResponse.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+
+                
             }
             catch (Exception ex)
             {
@@ -134,20 +141,25 @@ namespace Client
                 byte[] response = serverConnection.ReceiveMessage();
 
                 // Desserializa a resposta
-                var serverResponse = MessagePack.MessagePackSerializer.Deserialize<ServerResponse>(response);
+                var serverResponse = MessagePack.MessagePackSerializer.Deserialize<GeneralMessage>(response);
 
-                if (serverResponse.Success)
+                if (serverResponse.Type == "register")
                 {
-                    MessageBox.Show("Registro realizado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    ServerConnection.UserSelected = serverResponse.IdUser;
+                    var serverResponseBody = MessagePack.MessagePackSerializer.Deserialize<ServerResponse>(response);
 
-                    MessageBox.Show(serverResponse.IdUser.ToString(), "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    // Esconde os campos de registro e mostra a mensagem de agradecimento
-                    EsconderCamposRegistro();
-                }
-                else
-                {
-                    MessageBox.Show($"Erro no registro: {serverResponse.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (serverResponseBody.Success)
+                    {
+                        MessageBox.Show("Registro realizado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        ServerConnection.UserSelected = serverResponseBody.IdUser;
+
+                        MessageBox.Show(serverResponseBody.IdUser.ToString(), "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        // Esconde os campos de registro e mostra a mensagem de agradecimento
+                        EsconderCamposRegistro();
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Erro no registro: {serverResponseBody.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
             catch (Exception ex)
